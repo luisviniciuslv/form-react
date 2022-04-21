@@ -1,8 +1,10 @@
+import * as Style from "./Header.style";
+
 const Header = () => {
     return(
-        <div>
+        <Style.HeaderWrapper>
             <h1>Header</h1>
-        </div>
+        </Style.HeaderWrapper>
     )
 }
 
