@@ -1,14 +1,13 @@
 import './App.css';
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Login from "./components/Login"
 
 const App = () => {
   return (
     <>
     <div>
-      <Header />
-      <p>Hello</p>
-      <Footer />
+      <Login />
     </div>
     </>
   );
