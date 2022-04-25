@@ -9,7 +9,7 @@ function Login() {
       <div className="login-area">
       <h1>Login</h1>
         <p>Bem-vindo de volta! Por favor, informe seus dados <br/> para fazer o login</p>
-        <form class="form">
+        <form>
           <label for="username">Usuário</label>
           <input type="username"  placeholder="Usuário" />
           <label for="password">Senha</label>
