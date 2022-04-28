@@ -53,27 +53,29 @@ function Login() {
         <h1>Bem-vindo!</h1>
       </div>
       <div className="login-area">
-      <h1>REGISTRAR</h1>
-        <p>Bem-vindo Por favor, informe seus dados <br/> para fazer o registro</p>
+      <h1>Cadastre-se</h1>
+        <p> Por favor, informe seus dados abaixo <br/> para fazer o registro</p>
         <form>
+
+          <label htmlFor="name">Nome Completo</label>
+          <input type="text"  placeholder="Nome" name="name" onChange={NameChange}/>
+
           <label htmlFor="username">E-mail</label>
           <input  placeholder="E-mail" name="Email" onChange={EmailChange}/>
 
           <label htmlFor="password">Senha</label>
           <input type="password"  placeholder="Senha" name="password" onChange={PassChange}/>
 
-          <label htmlFor="name">Nome Completo</label>
-          <input type="text"  placeholder="nome" name="name" onChange={NameChange}/>
-
-          <label htmlFor="tel">telefone</label>
-          <input type="tel"  placeholder="Telefone" name="phone" onChange={NumberChange} maxLength="11" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/>
-          <small>Formato: DDD912345678</small>
-
+          <label htmlFor="tel">Telefone</label>
+          <input type="tel"  placeholder="912345678" name="phone" onChange={NumberChange} maxLength="11" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/>
+          
           <label htmlFor="cep">Cep</label>
-          <input input type="tel"  placeholder="Cep" name="Cep" onChange={CepChange} maxLength="8" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/>
-          <small>Formato: 01234567</small>
+          <input input type="tel"  placeholder="01234567" name="Cep" onChange={CepChange} maxLength="8" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/>
+          
+          <label htmlFor="address">Endereço</label>
+          <input  placeholder="Endereço" name="address" onChange={EmailChange}/>
 
-          <input className="login-button" type="submit" value="register"/>
+          <input className="login-button" type="submit" value="Cadastrar"/>
         </form>
       </div>
     </div>
