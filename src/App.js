@@ -1,13 +1,12 @@
 import './App.css';
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Login from "./components/Login"
+import DefaultInput from "./components/Login"
+import React from "react"
 
 const App = () => {
   return (
     <>
     <div>
-      <Login />
+      <DefaultInput />
     </div>
     </>
   );
