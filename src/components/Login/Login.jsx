@@ -1,7 +1,15 @@
 import "./Login.css"
-import React from "react"
+import {useState} from "react"
 
 function Login() {
+  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
+  
+  const [cidade, setCidade] = useState('')
+  const [estado, setEstado] = useState('')
+  const [bairro, setBairro] = useState('')
+  const [rua, setRua] = useState('')
+
   function consultaCep(cep){
     var url = 'https://viacep.com.br/ws/' + cep + '/json/';
     var request = new XMLHttpRequest();
@@ -16,27 +24,42 @@ function Login() {
       if(response.erro === true){
         return 'cep não encontrado'
       } else {
-        return 'Estado: ' + response.logadrouro + 'Bairro: ' + response.bairro + 'Cidade/UF' + response.localidade + '/' + response.uf
+        setEstado(response.uf);
+        setCidade(response.localidade);
+        setBairro(response.bairro);
+        setRua(response.logradouro)
       }
     }
 
     request.send()
   }
   function EmailChange(event) {
-    localStorage.setItem('Email', event.target.value);
+    setEmail(event.target.value)
   }
   
   function PassChange(event) {
-    localStorage.setItem('Password', event.target.value);
+    setPassword(event.target.value)
   }
   
   function NameChange(event) {
-    localStorage.setItem('name', event.target.value);
+    //localStorage.setItem('name', event.target.value);
   }
   
   function NumberChange(event) {
-    localStorage.setItem('number', event.target.value);
+    //localStorage.setItem('number', event.target.value);
   }
+
+  function HandleSubmit(event) {
+    event.preventDefault();
+  }
+
+  function SetLocal(email, pass, name, number){
+    localStorage.setItem('Email', email);
+    localStorage.setItem('Pass', pass);
+    localStorage.setItem('name', name);
+    localStorage.setItem('number', number);
+  }
+
   function CepChange(event) {
     if(event.target.value.length === 8){
       localStorage.setItem('cep', event.target.value);
@@ -45,8 +68,8 @@ function Login() {
     }else{
       localStorage.setItem('cep', '');
     }
-
   }
+
   return (
     <div className="container">
       <div className="content">       
@@ -55,8 +78,7 @@ function Login() {
       <div className="login-area">
       <h1>Cadastre-se</h1>
         <p> Por favor, informe seus dados abaixo <br/> para fazer o registro</p>
-        <form>
-
+        <form onSubmit={HandleSubmit}>
           <label htmlFor="name">Nome Completo</label>
           <input type="text"  placeholder="Nome" name="name" onChange={NameChange}/>
 
@@ -68,14 +90,15 @@ function Login() {
 
           <label htmlFor="tel">Telefone</label>
           <input type="tel"  placeholder="912345678" name="phone" onChange={NumberChange} maxLength="11" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/>
-          
+
           <label htmlFor="cep">Cep</label>
           <input input type="tel"  placeholder="01234567" name="Cep" onChange={CepChange} maxLength="8" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/>
-          
-          <label htmlFor="address">Endereço</label>
-          <input  placeholder="Endereço" name="address" onChange={EmailChange}/>
 
-          <input className="login-button" type="submit" value="Cadastrar"/>
+          <h5>Estado: {estado}</h5>
+          <h5>Cidade: {cidade}</h5>
+          <h5>Bairro: {bairro}</h5>
+          <h5>rua: {rua}</h5>
+          <input className="login-button" type="submit" value="Cadastrar" onClick={SetLocal(email, password, 0, 0)}/>
         </form>
       </div>
     </div>
